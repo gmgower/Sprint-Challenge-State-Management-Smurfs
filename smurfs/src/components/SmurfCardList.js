@@ -51,5 +51,4 @@ const mapStateToProps = state => {
     }
 }
 
-
 export default connect(mapStateToProps, {getSmurfs, postSmurf})(SmurfCardList)

@@ -37,3 +37,22 @@ export const postSmurf = (newSmurf) => dispatch => {
             dispatch({ type: POSTING_SMURF_FAILURE, payload: err})
         })
 }
+
+                    /* ===== DELETE =====  */
+
+export const DELETING_SMURF_START = 'DELETING_SMURF_START'
+export const DELETING_SMURF_FAILURE = 'DELETING_SMURF_FAILURE'
+export const DELETING_SMURF_SUCCESS = 'DELETING_SMURF_SUCCESS'
+export const deleteSmurf = (smurfId) => dispatch => {
+    dispatch({ type: DELETING_SMURF_START})
+    axios
+        .delete(`http://localhost:3333/smurfs/${smurfId}`)
+        .then(res => {
+            console.log(res)
+            dispatch({ type: DELETING_SMURF_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log('something terrible happened')
+            dispatch({ type: DELETING_SMURF_FAILURE, payload: err})
+        })
+}
