@@ -18,3 +18,22 @@ export const getSmurfs = () => {
         })
     }
 }
+
+                    /* ===== POST =====  */
+
+export const POSTING_SMURF_START = 'POSTING_SMURF_START'
+export const POSTING_SMURF_FAILURE = 'POSTING_SMURF_FAILURE'
+export const POSTING_SMURF_SUCCESS = 'POSTING_SMURF_SUCCESS'
+export const postSmurf = (newSmurf) => dispatch => {
+    dispatch({ type: POSTING_SMURF_START})
+    axios
+        .post('http://localhost:3333/smurfs', newSmurf)
+        .then(res => {
+            console.log(res)
+            dispatch({ type: POSTING_SMURF_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log('something terrible happened')
+            dispatch({ type: POSTING_SMURF_FAILURE, payload: err})
+        })
+}
