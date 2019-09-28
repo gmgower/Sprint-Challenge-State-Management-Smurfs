@@ -56,3 +56,22 @@ export const deleteSmurf = (smurfId) => dispatch => {
             dispatch({ type: DELETING_SMURF_FAILURE, payload: err})
         })
 }
+
+                    /* ==== PUT =====*/
+
+export const UPDATING_SMURF_START = 'UPDATING_SMURF_START'
+export const UPDATING_SMURF_FAILURE = 'UPDATING_SMURF_FAILURE'
+export const UPDATING_SMURF_SUCCESS = 'UPDATING_SMURF_SUCCESS'
+export const updateSmurf = (smurfId) => dispatch => {
+    dispatch({ type: UPDATING_SMURF_START})
+    axios
+        .delete(`http://localhost:3333/smurfs/${smurfId}`)
+        .then(res => {
+            console.log(res)
+            dispatch({ type: UPDATING_SMURF_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log('something terrible happened')
+            dispatch({ type: UPDATING_SMURF_FAILURE, payload: err})
+        })
+}

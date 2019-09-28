@@ -7,7 +7,10 @@ import {
   POSTING_SMURF_FAILURE,
   DELETING_SMURF_START,
   DELETING_SMURF_SUCCESS,
-  DELETING_SMURF_FAILURE
+  DELETING_SMURF_FAILURE,
+  UPDATING_SMURF_START,
+  UPDATING_SMURF_SUCCESS,
+  UPDATING_SMURF_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -79,8 +82,26 @@ export const reducer = (state = initialState, action) => {
             error: `Unable to delete Smurf: ${action.payload}`
         }
 
+        /* ==== PUT =====*/
 
-
+        case UPDATING_SMURF_START:
+                return {
+                    ...state,
+                    isFetching: true,
+                    error: ''
+                }
+        case UPDATING_SMURF_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                smurfs: action.payload
+            }
+        case UPDATING_SMURF_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: `Unable to delete Smurf: ${action.payload}`
+            }
     default:
       return state;
   }
