@@ -1,8 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import {connect} from 'react-redux';
 
-const SmurfCardList = () => {
+import {getSmurfs} from '../store/actions'
+
+const SmurfCardList = ({getSmurfs, isFetching, smurfs, error}) => {
+
+
+    useEffect(() => {
+        getSmurfs()
+    }, [getSmurfs])
+
+    if(isFetching) {
+        return <h2>Fetching smurf family for ya!</h2>
+    }
+
+
     return (
         <div>
             <h1>Test</h1>
@@ -19,4 +32,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {})(SmurfCardList)
+export default connect(mapStateToProps, {getSmurfs})(SmurfCardList)
