@@ -23,10 +23,30 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+
+    Context API helps make it less cumbersome to pass state between components(prop drilling). Props don't have to pass from parent to child but can be stored in a context object. Instead of retrieving the data from props, context API allows any component to retrieve data from the context object.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+    Actions: In Redux, actions are packets of information that contain a type and a payload, or the data we want to associate with that type of action. These actions are dispatched to the reducer.
+
+    Reducers: Reducers are the place where the state is updated. When a reducer receives an action, it knows how to update the state based on the action's type.
+
+    Store: The store sets up the state in Redux. It contains all the information within the application that can change.
+
+    'Single source of truth' A single store holds the state of the application in an object tree in that store.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+    Application state is immutable: When we change it, we are merely cloning the state object, modifying the clone, and replacing the original state with the new copy. In a component state, the state is stored within and across components. Application state makes more sense in a large application with many components, some of which hold state and some of which present DOM elements.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+    Redux thunk is a middleware for Redux that provides the ability to handle asynchronous Redux thunk is a middleware for Redux that provides the ability to handle asynchronous operations through action creators. Redux thunk can intercept the normal Redux flow to do something before actions make it to the reducer. When an action creator is called, redux-thunk intercepts the action and either forward it to the reducer (actions) or invokes the function (function)
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+    I guess Redux because the Redux flow is pretty intuitive to me. The idea of having an event trigger an action that feeds to a reducer (which serves as a switch) is a helpful way of thinking about an application. I also like having the store all in one place so I can see all of the state at once, even if different events trigger actions across my components.
 
 ## Project Set Up
 
